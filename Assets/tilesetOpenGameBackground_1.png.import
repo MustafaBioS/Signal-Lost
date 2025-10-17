@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b51ytbew5i6th"
-path="res://.godot/imported/6.png-59efdfa1b3068831042dc979bee6538e.ctex"
+uid="uid://cgqs1ehb7jfsa"
+path="res://.godot/imported/tilesetOpenGameBackground_1.png-e4b4cfecc24f23e89cf2540b508dad6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Urban Nightscape/320X180/6.png"
-dest_files=["res://.godot/imported/6.png-59efdfa1b3068831042dc979bee6538e.ctex"]
+source_file="res://Assets/tilesetOpenGameBackground_1.png"
+dest_files=["res://.godot/imported/tilesetOpenGameBackground_1.png-e4b4cfecc24f23e89cf2540b508dad6a.ctex"]
 
 [params]
 
