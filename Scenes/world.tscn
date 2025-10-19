@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bjpr0nrppx4pp"]
+[gd_scene load_steps=28 format=3 uid="uid://bjpr0nrppx4pp"]
 
 [ext_resource type="PackedScene" uid="uid://b1f828pnuqvis" path="res://Scenes/enemy.tscn" id="1_e0ngr"]
 [ext_resource type="PackedScene" uid="uid://xrk5tnoqi4t1" path="res://Scenes/player.tscn" id="1_go701"]
@@ -15,6 +15,9 @@
 [ext_resource type="Resource" uid="uid://bx6jaxjf5jnjx" path="res://Dialogues/start.dialogue" id="11_ikia7"]
 [ext_resource type="Script" uid="uid://b7nvckqas1an8" path="res://Scripts/door.gd" id="12_7yui6"]
 [ext_resource type="Texture2D" uid="uid://c7sc4dddsxvp2" path="res://Assets/heart pixel art/heart pixel art 16x16.png" id="13_c5t2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn0ld"]
+size = Vector2(55.466675, 37)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e0ngr"]
 texture = ExtResource("7_k7acu")
@@ -6089,10 +6092,24 @@ sources/0 = SubResource("TileSetAtlasSource_0pcbe")
 position = Vector2(727.62, 408.95)
 scale = Vector2(-0.9, 0.9)
 
+[node name="AttackZone" type="Area2D" parent="Enemy"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/AttackZone"]
+position = Vector2(4.5, -2.5)
+shape = SubResource("RectangleShape2D_kn0ld")
+
 [node name="Enemy2" parent="." instance=ExtResource("1_e0ngr")]
 position = Vector2(784.775, 408.95)
 scale = Vector2(0.8999999, 0.8999999)
 script = ExtResource("2_kn0ld")
+
+[node name="AttackZone" type="Area2D" parent="Enemy2"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/AttackZone"]
+position = Vector2(4.5, -2.5)
+shape = SubResource("RectangleShape2D_kn0ld")
 
 [node name="Player" parent="." instance=ExtResource("1_go701")]
 position = Vector2(500, 407.75)
@@ -6221,6 +6238,10 @@ layer_1/name = "Main"
 layer_1/tile_data = PackedInt32Array(1703983, 393217, 9, 1703976, 393217, 5, 1703990, 393217, 5)
 layer_2/name = "Foreground"
 
+[connection signal="body_entered" from="Enemy/AttackZone" to="Enemy" method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="Enemy/AttackZone" to="Enemy" method="_on_attack_zone_body_exited"]
+[connection signal="body_entered" from="Enemy2/AttackZone" to="Enemy2" method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="Enemy2/AttackZone" to="Enemy2" method="_on_attack_zone_body_exited"]
 [connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]
 [connection signal="body_exited" from="Killzone" to="Killzone" method="_on_body_exited"]
 [connection signal="body_entered" from="StartDialogue" to="StartDialogue" method="_on_body_entered"]
