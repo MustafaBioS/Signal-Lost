@@ -11,9 +11,18 @@ config_version=5
 [application]
 
 config/name="Signal Lost"
-run/main_scene="uid://bjpr0nrppx4pp"
+run/main_scene="uid://ddej284gmasad"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+State="*res://Scripts/state.gd"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://Dialogues/balloon.tscn"
 
 [display]
 
@@ -22,7 +31,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
 
 [input]
 
@@ -47,7 +56,12 @@ d={
 ]
 }
 
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Dialogues/start.dialogue")
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.2876803, 0.728215, 0.797582, 1)
