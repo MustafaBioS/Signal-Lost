@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjpr0nrppx4pp"]
+[gd_scene load_steps=29 format=3 uid="uid://bjpr0nrppx4pp"]
 
 [ext_resource type="PackedScene" uid="uid://b1f828pnuqvis" path="res://Scenes/enemy.tscn" id="1_e0ngr"]
 [ext_resource type="PackedScene" uid="uid://xrk5tnoqi4t1" path="res://Scenes/player.tscn" id="1_go701"]
@@ -6086,10 +6086,13 @@ sources/1 = SubResource("TileSetAtlasSource_axeuq")
 sources/7 = SubResource("TileSetAtlasSource_1cojt")
 sources/0 = SubResource("TileSetAtlasSource_0pcbe")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgpy0"]
+size = Vector2(27, 66)
+
 [node name="World" type="Node2D"]
 
 [node name="Enemy" parent="." instance=ExtResource("1_e0ngr")]
-position = Vector2(727.62, 408.95)
+position = Vector2(737.735, 408.95)
 scale = Vector2(-0.9, 0.9)
 
 [node name="AttackZone" type="Area2D" parent="Enemy"]
@@ -6237,6 +6240,20 @@ layer_0/name = "Background"
 layer_1/name = "Main"
 layer_1/tile_data = PackedInt32Array(1703983, 393217, 9, 1703976, 393217, 5, 1703990, 393217, 5)
 layer_2/name = "Foreground"
+
+[node name="LeftCol" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftCol"]
+position = Vector2(415.5, 383)
+shape = SubResource("RectangleShape2D_hgpy0")
+
+[node name="RightCol" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightCol"]
+position = Vector2(897, 384)
+shape = SubResource("RectangleShape2D_hgpy0")
 
 [connection signal="body_entered" from="Enemy/AttackZone" to="Enemy" method="_on_attack_zone_body_entered"]
 [connection signal="body_exited" from="Enemy/AttackZone" to="Enemy" method="_on_attack_zone_body_exited"]

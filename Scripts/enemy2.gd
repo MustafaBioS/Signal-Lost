@@ -2,16 +2,24 @@ extends CharacterBody2D
 
 const SPEED = 7.5
 const GRAVITY = 500.0
+var attacking = false
 var on_cd = false
+var target = null
 var right = true
 var can_turn = true
+var hearts = 1
 @onready var ray = $RayCast2D
 @onready var anim = $AnimatedSprite2D
+
+func enemy():
+	pass
 
 func _process(delta):
 	move_enemy(delta)
 	turn()
-
+	if hearts <= 0:
+		queue_free()
+		
 func move_enemy(delta):
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -31,12 +39,25 @@ func turn():
 
 func _on_attack_zone_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
-		await get_tree().create_timer(1.5).timeout
-		if on_cd == false:
-			anim.play("attack")
-			body.hearts -= 1
-			on_cd = true
-			on_cd = false
-
+		target = body
+		attacking = true
+		attack_loop()
+		
 func _on_attack_zone_body_exited(body: Node2D) -> void:
-	anim.play("default")
+	if body == target:
+		attacking = false
+		target = null
+		anim.play("default")
+		
+func attack_loop():
+	while attacking and target and not on_cd:
+		on_cd = true
+		anim.play("attack")
+
+		if target and target.has_method("player"):
+			target.hearts -= 1
+
+		await get_tree().create_timer(1.5).timeout
+		on_cd = false
+
+		await get_tree().process_frame

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://xrk5tnoqi4t1"]
+[gd_scene load_steps=12 format=3 uid="uid://xrk5tnoqi4t1"]
 
 [ext_resource type="Script" uid="uid://jupvterkha1r" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://q8a106oyx7pr" path="res://Assets/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SpriteSheet.png" id="2_cvnsp"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v0iea"]
 load_path = "res://.godot/imported/SpriteSheet.png-a80cbb98bfaa287e3f28099212ee295d.ctex"
@@ -21,6 +22,10 @@ region = Rect2(32, 0, 16, 16)
 atlas = SubResource("CompressedTexture2D_v0iea")
 region = Rect2(48, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(48, 64, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_x3wgy"]
 animations = [{
 "frames": [{
@@ -35,6 +40,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fkybt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
 }],
 "loop": true,
 "name": &"default",
@@ -43,6 +51,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
 radius = 6.0207973
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
+size = Vector2(43.80001, 49.80001)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(5, 5)
@@ -56,7 +67,18 @@ zoom = Vector2(3.5, 3.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x3wgy")
+frame_progress = 0.37252936
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
 shape = SubResource("CircleShape2D_v0iea")
+
+[node name="AttackZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
+position = Vector2(0.30000076, -9.499999)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_v0iea")
+
+[connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="AttackZone" to="." method="_on_attack_zone_body_exited"]
