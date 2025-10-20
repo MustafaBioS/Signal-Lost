@@ -44,6 +44,7 @@ func _process(delta):
 			
 	if player_near_elev and Input.is_action_just_pressed("interact"):
 		print("elev interacted")
+		get_tree().change_scene_to_file("res://Scenes/roof.tscn")
 		
 		
 func _physics_process(delta: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://37f1a15ohvt0"]
+[gd_scene load_steps=32 format=3 uid="uid://37f1a15ohvt0"]
 
 [ext_resource type="AudioStream" uid="uid://gpq4hb8cus3t" path="res://Music/jazz-lounge-relaxing-background-music-412597.mp3" id="1_dg1t2"]
 [ext_resource type="Texture2D" uid="uid://c7sc4dddsxvp2" path="res://Assets/heart pixel art/heart pixel art 16x16.png" id="2_71wko"]
@@ -13,10 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://gwsfyk0rmov4" path="res://Assets/FREE Background City/Background 04.png" id="11_g1cwp"]
 [ext_resource type="Texture2D" uid="uid://b47mfu8whqyu6" path="res://Assets/CP_V1.1.0_nyknck/CP_V1.0.4_nyknck/CP_V1.0.4.png" id="12_t7h1d"]
 [ext_resource type="Texture2D" uid="uid://bfq0rke4pft67" path="res://Assets/Spritesheet/roguelikeCity_magenta.png" id="13_k14r4"]
-[ext_resource type="Script" uid="uid://b6o8b51a1nxxl" path="res://Scripts/killzone.gd" id="14_w5xge"]
 [ext_resource type="PackedScene" uid="uid://xrk5tnoqi4t1" path="res://Scenes/player.tscn" id="15_6dod3"]
+[ext_resource type="Texture2D" uid="uid://dlvyefcnx5nvc" path="res://Assets/antenna.png" id="15_dg1t2"]
+[ext_resource type="Script" uid="uid://dlxtkidew8tgy" path="res://Scripts/antenna.gd" id="16_xietp"]
+[ext_resource type="Resource" uid="uid://b8mb3upajc35w" path="res://Dialogues/final.dialogue" id="17_jw31k"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4yt8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71wko"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 2
 border_width_top = 2
@@ -29,7 +31,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhh6f"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xietp"]
 bg_color = Color(0.6052743, 0.6052743, 0.6052743, 1)
 border_width_left = 2
 border_width_top = 2
@@ -42,7 +44,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayip"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jw31k"]
 bg_color = Color(0.83033526, 0.83033514, 0.83033514, 1)
 border_width_left = 2
 border_width_top = 2
@@ -55,26 +57,26 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_158mb"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8kr8g"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_158mb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o001t"]
 bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_cayip"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_n0sv4"]
 color = Color(1, 1, 1, 1)
 thickness = 6
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_158mb"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2ny81"]
 color = Color(0, 0.78385824, 0.83214635, 1)
 thickness = 6
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwsa2"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_thgi4"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x5rp5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73nex"]
 texture = ExtResource("12_t7h1d")
 2:2/0 = 0
 3:2/0 = 0
@@ -676,7 +678,7 @@ texture = ExtResource("12_t7h1d")
 7:56/0 = 0
 9:56/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0tpwy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1cwp"]
 texture = ExtResource("13_k14r4")
 separation = Vector2i(1, 1)
 0:0/0 = 0
@@ -2837,7 +2839,7 @@ separation = Vector2i(1, 1)
 37:28/0 = 0
 38:28/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3baak"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7h1d"]
 texture = ExtResource("7_n0sv4")
 0:0/0 = 0
 1:0/0 = 0
@@ -3096,20 +3098,20 @@ texture = ExtResource("7_n0sv4")
 30:7/0 = 0
 31:7/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_p0ro8"]
+[sub_resource type="TileSet" id="TileSet_k14r4"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 3
-sources/1 = SubResource("TileSetAtlasSource_0tpwy")
-sources/7 = SubResource("TileSetAtlasSource_3baak")
-sources/0 = SubResource("TileSetAtlasSource_x5rp5")
+sources/1 = SubResource("TileSetAtlasSource_g1cwp")
+sources/7 = SubResource("TileSetAtlasSource_t7h1d")
+sources/0 = SubResource("TileSetAtlasSource_73nex")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7acu"]
-size = Vector2(1969, 60)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5xge"]
+size = Vector2(16.25, 72)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgpy0"]
-size = Vector2(27, 66)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg1t2"]
+size = Vector2(37, 52)
 
-[node name="Roof" type="Node2D"]
+[node name="World" type="Node2D"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_dg1t2")
@@ -3213,10 +3215,10 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xhh6f")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_71wko")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xietp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jw31k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8kr8g")
 text = "Resume"
 
 [node name="Options" type="Button" parent="UI/Pause Menu/MainButtons"]
@@ -3228,10 +3230,10 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xhh6f")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_71wko")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xietp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jw31k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8kr8g")
 text = "Options"
 
 [node name="Exit" type="Button" parent="UI/Pause Menu/MainButtons"]
@@ -3243,10 +3245,10 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xhh6f")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_71wko")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xietp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jw31k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8kr8g")
 text = "Exit"
 
 [node name="Settings" type="Panel" parent="UI/Pause Menu"]
@@ -3263,7 +3265,7 @@ offset_right = 442.0
 offset_bottom = 281.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_158mb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_o001t")
 
 [node name="Label" type="Label" parent="UI/Pause Menu/Settings"]
 layout_mode = 1
@@ -3296,10 +3298,10 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xhh6f")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_71wko")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xietp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jw31k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8kr8g")
 text = "Back"
 
 [node name="AudioControl" type="HSlider" parent="UI/Pause Menu/Settings"]
@@ -3314,9 +3316,9 @@ offset_right = -162.0
 offset_bottom = -78.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/slider = SubResource("StyleBoxLine_cayip")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_158mb")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_158mb")
+theme_override_styles/slider = SubResource("StyleBoxLine_n0sv4")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_2ny81")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_2ny81")
 max_value = 1.0
 step = 0.05
 value = 1.0
@@ -3336,7 +3338,7 @@ offset_bottom = -53.245132
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wwsa2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_thgi4")
 text = "Fullscreen"
 script = ExtResource("6_o001t")
 
@@ -3346,7 +3348,7 @@ script = ExtResource("6_o001t")
 motion_mirroring = Vector2(768, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1"]
-position = Vector2(640, 360)
+position = Vector2(633, 366)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_n0sv4")
 
@@ -3384,39 +3386,45 @@ texture = ExtResource("11_g1cwp")
 
 [node name="TileMap" type="TileMap" parent="."]
 show_behind_parent = true
-tile_set = SubResource("TileSet_p0ro8")
+tile_set = SubResource("TileSet_k14r4")
 format = 2
 layer_0/name = "Background"
-layer_0/tile_data = PackedInt32Array(1835039, 393217, 5, 1769503, 393217, 5, 1703967, 393217, 5, 1638431, 393217, 5, 1572895, 393217, 5, 1507359, 393217, 5, 1507358, 393217, 5, 1572894, 393217, 5, 1638430, 393217, 5, 1703966, 393217, 5, 1769502, 393217, 5, 1835038, 393217, 5, 1507357, 327681, 5, 1572893, 327681, 5, 1638429, 327681, 5, 1703965, 327681, 5, 1769501, 327681, 5, 1835037, 327681, 5, 1441821, 327681, 5, 1441828, 458753, 5, 1507364, 458753, 5, 1572900, 458753, 5, 1638436, 458753, 5, 1703972, 458753, 5, 1769508, 458753, 5, 1835044, 458753, 5, 1507360, 393217, 5, 1507361, 393217, 5, 1507362, 393217, 5, 1572898, 393217, 5, 1572899, 393217, 5, 1507363, 393217, 5, 1572897, 393217, 5, 1572896, 393217, 5, 1638433, 393217, 5, 1638434, 393217, 5, 1638432, 393217, 5, 1638435, 393217, 5, 1703971, 393217, 5, 1703970, 393217, 5, 1703969, 393217, 5, 1703968, 393217, 5, 1769504, 393217, 5, 1769505, 393217, 5, 1769506, 393217, 5, 1769507, 393217, 5, 1835042, 393217, 5, 1835041, 393217, 5, 1835043, 393217, 5, 1835040, 393217, 5)
 layer_1/name = "Main"
+layer_1/tile_data = PackedInt32Array(1835037, 327681, 9, 1769501, 327681, 9, 1703965, 327681, 9, 1638429, 327681, 9, 1572893, 327681, 9, 1507357, 327681, 9, 1441821, 327681, 9, 1835038, 393217, 9, 1835039, 393217, 9, 1835040, 393217, 9, 1769504, 393217, 9, 1769503, 393217, 9, 1769502, 393217, 9, 1703967, 393217, 9, 1703968, 393217, 9, 1638432, 393217, 9, 1638431, 393217, 9, 1703966, 393217, 9, 1638430, 393217, 9, 1572894, 393217, 9, 1572895, 393217, 9, 1572896, 393217, 9, 1507359, 393217, 9, 1507358, 393217, 9, 1507360, 393217, 9, 1507361, 393217, 9, 1572897, 393217, 9, 1835041, 393217, 9, 1769505, 393217, 9, 1703969, 393217, 9, 1638433, 393217, 9, 1835042, 458753, 9, 1769506, 458753, 9, 1703970, 458753, 9, 1638434, 458753, 9, 1572898, 458753, 9, 1507362, 458753, 9, 1441826, 458753, 9)
 layer_2/name = "Foreground"
 
-[node name="Killzone" type="Area2D" parent="."]
-position = Vector2(0, 550)
-collision_mask = 2
-script = ExtResource("14_w5xge")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(974.5, 20)
-shape = SubResource("RectangleShape2D_k7acu")
-
 [node name="Player" parent="." instance=ExtResource("15_6dod3")]
-position = Vector2(500, 407.75)
+position = Vector2(500.99997, 361)
 scale = Vector2(0.7, 0.7)
 
 [node name="LeftCol" type="StaticBody2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftCol"]
-position = Vector2(440, 383)
-shape = SubResource("RectangleShape2D_hgpy0")
+position = Vector2(472, 316)
+shape = SubResource("RectangleShape2D_w5xge")
 
 [node name="RightCol" type="StaticBody2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightCol"]
-position = Vector2(897, 384)
-shape = SubResource("RectangleShape2D_hgpy0")
+position = Vector2(552, 317)
+shape = SubResource("RectangleShape2D_w5xge")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Antenna" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(555.00006, 345)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("15_dg1t2")
+
+[node name="AntennaArea" type="Area2D" parent="StaticBody2D"]
+script = ExtResource("16_xietp")
+dialogue_resource = ExtResource("17_jw31k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/AntennaArea"]
+position = Vector2(543.5, 342)
+shape = SubResource("RectangleShape2D_dg1t2")
 
 [connection signal="pressed" from="UI/Pause Menu/MainButtons/Resume" to="Player" method="_on_resume_pressed"]
 [connection signal="pressed" from="UI/Pause Menu/MainButtons/Options" to="UI/Pause Menu" method="_on_options_pressed"]
@@ -3424,5 +3432,5 @@ shape = SubResource("RectangleShape2D_hgpy0")
 [connection signal="pressed" from="UI/Pause Menu/Settings/Back" to="UI/Pause Menu" method="_on_back_pressed"]
 [connection signal="value_changed" from="UI/Pause Menu/Settings/AudioControl" to="UI/Pause Menu/Settings/AudioControl" method="_on_value_changed"]
 [connection signal="toggled" from="UI/Pause Menu/Settings/Fullscreen" to="UI/Pause Menu/Settings/Fullscreen" method="_on_toggled"]
-[connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]
-[connection signal="body_exited" from="Killzone" to="Killzone" method="_on_body_exited"]
+[connection signal="body_entered" from="StaticBody2D/AntennaArea" to="StaticBody2D/AntennaArea" method="_on_body_entered"]
+[connection signal="body_exited" from="StaticBody2D/AntennaArea" to="StaticBody2D/AntennaArea" method="_on_body_exited"]

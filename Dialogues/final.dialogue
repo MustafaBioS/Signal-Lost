@@ -1,0 +1,24 @@
+~ start
+set State.in_dialogue = true
+
+if State.rang == true:
+	Phone: Boss is calling again...
+else:
+	Phone: The Boss is calling.
+
+- Answer
+	Boss: Good Job, You have successfully finished the mission...
+	Boss: We just wired you 1 Million Dollars for your hard work.
+	Boss: Now remember, This never happened, We never talked...
+	set State.finished_dialogue = true
+	set State.in_dialogue = false
+	=> END
+
+- Decline
+	set State.rang = true
+	Phone: The call ends abruptly. You already know... he’ll call again.
+	=> start
+
+set State.finished_dialogue = true
+set State.in_dialogue = false
+=> END

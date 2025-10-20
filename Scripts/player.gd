@@ -44,7 +44,6 @@ func _process(delta):
 	if player_near_door and Input.is_action_just_pressed("interact"):
 		print("interacted")
 		get_tree().change_scene_to_file("res://Scenes/office.tscn")
-		
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
