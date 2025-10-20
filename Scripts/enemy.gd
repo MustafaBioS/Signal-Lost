@@ -15,8 +15,9 @@ func enemy():
 	pass
 
 func _process(delta):
-	move_enemy(delta)
-	turn()
+	if State.paused == false:
+		move_enemy(delta)
+		turn()
 	if hearts <= 0:
 		queue_free()
 
@@ -50,12 +51,12 @@ func _on_attack_zone_body_exited(body: Node2D) -> void:
 		anim.play("default")
 		
 func attack_loop():
-	while attacking and target and not on_cd:
+	while attacking and target and not on_cd and State.paused == false:
 		on_cd = true
 		anim.play("attack")
 
 		# damage check
-		if target and target.has_method("player"):
+		if target and target.has_method("player") and State.paused == false:
 			target.hearts -= 1
 			
 		await get_tree().create_timer(1.5).timeout

@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjpr0nrppx4pp"]
+[gd_scene load_steps=41 format=3 uid="uid://bjpr0nrppx4pp"]
 
+[ext_resource type="AudioStream" uid="uid://gpq4hb8cus3t" path="res://Music/jazz-lounge-relaxing-background-music-412597.mp3" id="1_1cojt"]
 [ext_resource type="PackedScene" uid="uid://b1f828pnuqvis" path="res://Scenes/enemy.tscn" id="1_e0ngr"]
 [ext_resource type="PackedScene" uid="uid://xrk5tnoqi4t1" path="res://Scenes/player.tscn" id="1_go701"]
 [ext_resource type="Texture2D" uid="uid://bfq0rke4pft67" path="res://Assets/Spritesheet/roguelikeCity_magenta.png" id="2_5a7ea"]
@@ -13,13 +14,74 @@
 [ext_resource type="Script" uid="uid://b6o8b51a1nxxl" path="res://Scripts/killzone.gd" id="9_5v1tr"]
 [ext_resource type="Script" uid="uid://dbdv0hprfwgib" path="res://Scripts/start.gd" id="10_0fj1v"]
 [ext_resource type="Resource" uid="uid://bx6jaxjf5jnjx" path="res://Dialogues/start.dialogue" id="11_ikia7"]
-[ext_resource type="Script" uid="uid://b7nvckqas1an8" path="res://Scripts/door.gd" id="12_7yui6"]
 [ext_resource type="Texture2D" uid="uid://c7sc4dddsxvp2" path="res://Assets/heart pixel art/heart pixel art 16x16.png" id="13_c5t2i"]
+[ext_resource type="Script" uid="uid://bv0lid7u6qsrg" path="res://Scripts/menu.gd" id="17_yq1aw"]
+[ext_resource type="FontFile" uid="uid://dj1cpfd8qv2h" path="res://Fonts/Bangers-Regular.ttf" id="18_pyn1s"]
+[ext_resource type="Script" uid="uid://c51wtgg8srgtb" path="res://Scripts/audio.gd" id="19_no8kt"]
+[ext_resource type="Script" uid="uid://cpdypiu7vrl4j" path="res://Scripts/fullscreen.gd" id="20_xbk3s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4yt8"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhh6f"]
+bg_color = Color(0.6052743, 0.6052743, 0.6052743, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayip"]
+bg_color = Color(0.83033526, 0.83033514, 0.83033514, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_158mb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_158mb"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cayip"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_158mb"]
+color = Color(0, 0.78385824, 0.83214635, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwsa2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn0ld"]
 size = Vector2(55.466675, 37)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e0ngr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yq1aw"]
 texture = ExtResource("7_k7acu")
 2:2/0 = 0
 3:2/0 = 0
@@ -621,7 +683,7 @@ texture = ExtResource("7_k7acu")
 7:56/0 = 0
 9:56/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kn0ld"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyn1s"]
 texture = ExtResource("2_5a7ea")
 separation = Vector2i(1, 1)
 0:0/0 = 0
@@ -2782,7 +2844,7 @@ separation = Vector2i(1, 1)
 37:28/0 = 0
 38:28/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hgpy0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_no8kt"]
 texture = ExtResource("3_o06y3")
 0:0/0 = 0
 1:0/0 = 0
@@ -3044,9 +3106,9 @@ texture = ExtResource("3_o06y3")
 [sub_resource type="TileSet" id="TileSet_t2t4p"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 3
-sources/1 = SubResource("TileSetAtlasSource_kn0ld")
-sources/7 = SubResource("TileSetAtlasSource_hgpy0")
-sources/0 = SubResource("TileSetAtlasSource_e0ngr")
+sources/1 = SubResource("TileSetAtlasSource_pyn1s")
+sources/7 = SubResource("TileSetAtlasSource_no8kt")
+sources/0 = SubResource("TileSetAtlasSource_yq1aw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7acu"]
 size = Vector2(1969, 60)
@@ -3055,7 +3117,7 @@ size = Vector2(1969, 60)
 size = Vector2(215, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikia7"]
-size = Vector2(10.9999695, 7.125)
+size = Vector2(38, 54)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0pcbe"]
 texture = ExtResource("7_k7acu")
@@ -6091,6 +6153,235 @@ size = Vector2(27, 66)
 
 [node name="World" type="Node2D"]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_1cojt")
+autoplay = true
+bus = &"Music"
+
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="HeartsContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 463.29504
+offset_top = -340.0
+offset_right = 610.79504
+offset_bottom = -298.99997
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Heart1" type="TextureRect" parent="UI/HeartsContainer"]
+layout_mode = 2
+texture = ExtResource("13_c5t2i")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="UI/HeartsContainer"]
+layout_mode = 2
+texture = ExtResource("13_c5t2i")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="UI/HeartsContainer"]
+layout_mode = 2
+texture = ExtResource("13_c5t2i")
+expand_mode = 2
+
+[node name="Pause Menu" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_yq1aw")
+
+[node name="Panel" type="Panel" parent="UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.23
+offset_bottom = -0.22998047
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overlay" type="Panel" parent="UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_top = 75.0
+offset_right = 122.0
+offset_bottom = 183.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("18_pyn1s")
+theme_override_font_sizes/font_size = 100
+text = "Paused"
+
+[node name="MainButtons" type="VBoxContainer" parent="UI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -60.0
+offset_right = 137.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Resume" type="Button" parent="UI/Pause Menu/MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xhh6f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
+text = "Resume"
+
+[node name="Options" type="Button" parent="UI/Pause Menu/MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xhh6f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
+text = "Options"
+
+[node name="Exit" type="Button" parent="UI/Pause Menu/MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xhh6f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
+text = "Exit"
+
+[node name="Settings" type="Panel" parent="UI/Pause Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -419.0
+offset_top = -310.0
+offset_right = 442.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_158mb")
+
+[node name="Label" type="Label" parent="UI/Pause Menu/Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="UI/Pause Menu/Settings"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -121.5
+offset_top = -105.22
+offset_right = 121.5
+offset_bottom = -37.220093
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xhh6f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
+text = "Back"
+
+[node name="AudioControl" type="HSlider" parent="UI/Pause Menu/Settings"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 187.0
+offset_top = -169.755
+offset_right = -162.0
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_cayip")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_158mb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_158mb")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("19_no8kt")
+audio_bus_name = "Music"
+
+[node name="Fullscreen" type="CheckButton" parent="UI/Pause Menu/Settings"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 179.0
+offset_top = -113.244995
+offset_right = -154.0
+offset_bottom = -53.245132
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wwsa2")
+text = "Fullscreen"
+script = ExtResource("20_xbk3s")
+
 [node name="Enemy" parent="." instance=ExtResource("1_e0ngr")]
 position = Vector2(737.735, 408.95)
 scale = Vector2(-0.9, 0.9)
@@ -6113,10 +6404,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/AttackZone"]
 position = Vector2(4.5, -2.5)
 shape = SubResource("RectangleShape2D_kn0ld")
-
-[node name="Player" parent="." instance=ExtResource("1_go701")]
-position = Vector2(500, 407.75)
-scale = Vector2(0.7, 0.7)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -6181,7 +6468,6 @@ position = Vector2(974.5, 20)
 shape = SubResource("RectangleShape2D_k7acu")
 
 [node name="StartDialogue" type="Area2D" parent="."]
-visible = false
 position = Vector2(500.95, 406)
 collision_mask = 2
 script = ExtResource("10_0fj1v")
@@ -6195,42 +6481,14 @@ shape = SubResource("RectangleShape2D_5v1tr")
 [node name="Door" type="Area2D" parent="."]
 position = Vector2(762.815, 406.125)
 collision_mask = 2
-script = ExtResource("12_7yui6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
-position = Vector2(-2.3150024, 6.4375)
+position = Vector2(-2.8150024, -7.125)
 shape = SubResource("RectangleShape2D_ikia7")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="HeartsContainer" type="HBoxContainer" parent="UI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 463.29504
-offset_top = -340.0
-offset_right = 610.79504
-offset_bottom = -298.99997
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Heart1" type="TextureRect" parent="UI/HeartsContainer"]
-layout_mode = 2
-texture = ExtResource("13_c5t2i")
-expand_mode = 2
-
-[node name="Heart2" type="TextureRect" parent="UI/HeartsContainer"]
-layout_mode = 2
-texture = ExtResource("13_c5t2i")
-expand_mode = 2
-
-[node name="Heart3" type="TextureRect" parent="UI/HeartsContainer"]
-layout_mode = 2
-texture = ExtResource("13_c5t2i")
-expand_mode = 2
+[node name="Player" parent="." instance=ExtResource("1_go701")]
+position = Vector2(500, 407.75)
+scale = Vector2(0.7, 0.7)
 
 [node name="TileMap2" type="TileMap" parent="."]
 show_behind_parent = true
@@ -6245,7 +6503,7 @@ layer_2/name = "Foreground"
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftCol"]
-position = Vector2(415.5, 383)
+position = Vector2(440, 383)
 shape = SubResource("RectangleShape2D_hgpy0")
 
 [node name="RightCol" type="StaticBody2D" parent="."]
@@ -6255,6 +6513,12 @@ collision_mask = 2
 position = Vector2(897, 384)
 shape = SubResource("RectangleShape2D_hgpy0")
 
+[connection signal="pressed" from="UI/Pause Menu/MainButtons/Resume" to="Player" method="_on_resume_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/MainButtons/Options" to="UI/Pause Menu" method="_on_options_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/MainButtons/Exit" to="UI/Pause Menu" method="_on_exit_pressed"]
+[connection signal="pressed" from="UI/Pause Menu/Settings/Back" to="UI/Pause Menu" method="_on_back_pressed"]
+[connection signal="value_changed" from="UI/Pause Menu/Settings/AudioControl" to="UI/Pause Menu/Settings/AudioControl" method="_on_value_changed"]
+[connection signal="toggled" from="UI/Pause Menu/Settings/Fullscreen" to="UI/Pause Menu/Settings/Fullscreen" method="_on_toggled"]
 [connection signal="body_entered" from="Enemy/AttackZone" to="Enemy" method="_on_attack_zone_body_entered"]
 [connection signal="body_exited" from="Enemy/AttackZone" to="Enemy" method="_on_attack_zone_body_exited"]
 [connection signal="body_entered" from="Enemy2/AttackZone" to="Enemy2" method="_on_attack_zone_body_entered"]
@@ -6262,3 +6526,5 @@ shape = SubResource("RectangleShape2D_hgpy0")
 [connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]
 [connection signal="body_exited" from="Killzone" to="Killzone" method="_on_body_exited"]
 [connection signal="body_entered" from="StartDialogue" to="StartDialogue" method="_on_body_entered"]
+[connection signal="body_entered" from="Door" to="Player" method="_on_door_body_entered"]
+[connection signal="body_exited" from="Door" to="Player" method="_on_door_body_exited"]

@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddej284gmasad"]
+[gd_scene load_steps=14 format=3 uid="uid://ddej284gmasad"]
 
 [ext_resource type="FontFile" uid="uid://dj1cpfd8qv2h" path="res://Fonts/Bangers-Regular.ttf" id="1_1rerr"]
 [ext_resource type="Script" uid="uid://bv0lid7u6qsrg" path="res://Scripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="Script" uid="uid://c51wtgg8srgtb" path="res://Scripts/audio.gd" id="3_158mb"]
+[ext_resource type="AudioStream" uid="uid://gpq4hb8cus3t" path="res://Music/jazz-lounge-relaxing-background-music-412597.mp3" id="3_cayip"]
+[ext_resource type="Script" uid="uid://cpdypiu7vrl4j" path="res://Scripts/fullscreen.gd" id="5_wwsa2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4yt8"]
 bg_color = Color(1, 1, 1, 1)
@@ -44,7 +47,24 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_158mb"]
 
-[node name="Control" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_158mb"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cayip"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_158mb"]
+color = Color(0, 0.78385824, 0.83214635, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwsa2"]
+
+[node name="Main Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,31 +73,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xhh6f")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cayip")
+autoplay = true
+bus = &"Music"
+
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.23
+offset_bottom = -0.22998047
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Overlay" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -205.0
-offset_top = 100.0
+offset_top = 60.0
 offset_right = 205.0
-offset_bottom = 208.0
+offset_bottom = 168.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_1rerr")
 theme_override_font_sizes/font_size = 100
 text = "Signal Lost"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainButtons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -92,7 +125,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Play" type="Button" parent="VBoxContainer"]
+[node name="Play" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -107,7 +140,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
 text = "Play"
 
-[node name="Options" type="Button" parent="VBoxContainer"]
+[node name="Options" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -122,7 +155,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
 text = "Options"
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
+[node name="Exit" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -137,6 +170,99 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="Settings" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -419.0
+offset_top = -310.0
+offset_right = 442.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_158mb")
+
+[node name="Label" type="Label" parent="Settings"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="Settings"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -121.5
+offset_top = -105.22
+offset_right = 121.5
+offset_bottom = -37.220093
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xhh6f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_158mb")
+text = "Back"
+
+[node name="AudioControl" type="HSlider" parent="Settings"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 187.0
+offset_top = -169.755
+offset_right = -162.0
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_cayip")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_158mb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_158mb")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("3_158mb")
+audio_bus_name = "Music"
+
+[node name="Fullscreen" type="CheckButton" parent="Settings"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 179.0
+offset_top = -113.244995
+offset_right = -154.0
+offset_bottom = -53.245132
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wwsa2")
+text = "Fullscreen"
+script = ExtResource("5_wwsa2")
+
+[connection signal="pressed" from="MainButtons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainButtons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MainButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Settings/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Settings/AudioControl" to="Settings/AudioControl" method="_on_value_changed"]
+[connection signal="toggled" from="Settings/Fullscreen" to="Settings/Fullscreen" method="_on_toggled"]
