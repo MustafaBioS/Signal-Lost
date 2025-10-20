@@ -4,7 +4,7 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -250.0
 var hearts = 3
 var enemy_in_zone: Node2D = null
-var player_near_door = false
+var player_near_elev = false
 var last_hearts = hearts
 var dir = Vector2.ZERO
 @onready var anim = $AnimatedSprite2D
@@ -42,9 +42,9 @@ func _process(delta):
 			pause.visible = false
 			State.paused = false
 			
-	if player_near_door and Input.is_action_just_pressed("interact"):
-		print("interacted")
-		get_tree().change_scene_to_file("res://Scenes/office.tscn")
+	if player_near_elev and Input.is_action_just_pressed("interact"):
+		print("elev interacted")
+		
 		
 func _physics_process(delta: float) -> void:
 	if State.paused or State.in_dialogue:
@@ -102,13 +102,13 @@ func _on_resume_pressed() -> void:
 	State.paused = false
 
 
-func _on_door_body_entered(body: Node2D) -> void:
+func _on_elevator_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
-		player_near_door = true
+		player_near_elev = true
 		print("player entered")
 
 
-func _on_door_body_exited(body: Node2D) -> void:
+func _on_elevator_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
-		player_near_door = false
+		player_near_elev = false
 		print("player left")

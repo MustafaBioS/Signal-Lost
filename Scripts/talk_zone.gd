@@ -2,7 +2,14 @@ extends Area2D
 
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
-const Balloon = preload("uid://ck4utph4xjx2")
+var start = false
+const Balloon = preload("uid://b4kt58sx1oul5")
+
+func _process(delta):
+	if start == true:
+		if Input.is_action_just_pressed("interact"):	
+			print("start dial")
+			action()
 
 func action() -> void:
 	if State.finished_dialogue == false:
@@ -13,5 +20,8 @@ func action() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	print("entered")
 	if State.finished_dialogue == false:
-		print("start dial")
-		action()
+		start = true
+
+
+func _on_body_exited(body: Node2D) -> void:
+	start = false

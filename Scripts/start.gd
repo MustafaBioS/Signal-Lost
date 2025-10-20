@@ -2,7 +2,7 @@ extends Area2D
 
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
-const Balloon = preload("uid://ck4utph4xjx2")
+const Balloon = preload("uid://bhpjurey5uv1v")
 
 func action() -> void:
 	if State.finished_dialogue == false:

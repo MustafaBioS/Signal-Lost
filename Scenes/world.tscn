@@ -6159,7 +6159,6 @@ autoplay = true
 bus = &"Music"
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HeartsContainer" type="HBoxContainer" parent="UI"]
 anchors_preset = 8
@@ -6474,7 +6473,6 @@ script = ExtResource("10_0fj1v")
 dialogue_resource = ExtResource("11_ikia7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartDialogue"]
-visible = false
 position = Vector2(-22.450012, 0)
 shape = SubResource("RectangleShape2D_5v1tr")
 
